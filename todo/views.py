@@ -10,3 +10,9 @@ def index(request):
         new_todo.save()
         return redirect('/')
     return render(request, 'index.html', {'todos': todos})
+
+
+def delete(request, pk):
+    todo = Todo.objects.get(pk=pk)
+    todo.delete()
+    return redirect('/')
